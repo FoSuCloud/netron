@@ -24,8 +24,9 @@ app.Application = class {
         const packageFile = path.join(path.dirname(__dirname), 'package.json');
         const packageContent = fs.readFileSync(packageFile, 'utf-8');
         this._package = JSON.parse(packageContent);
-
+        // 标识应用程序的唯一标识符
         electron.app.setAppUserModelId('com.lutzroeder.netron');
+        // 允许多个渲染进程之间共享相同的 JavaScript 环境，从而减少内存占用和资源浪费
         electron.app.allowRendererProcessReuse = true;
 
         if (!electron.app.requestSingleInstanceLock()) {
@@ -80,10 +81,12 @@ app.Application = class {
             const owner = event.sender.getOwnerBrowserWindow();
             event.returnValue = electron.dialog.showSaveDialogSync(owner, options);
         });
+        // todo 监听按钮点击之后的时间
         electron.ipcMain.on('execute', (event, data) => {
-            const owner = event.sender.getOwnerBrowserWindow();
+            const owner = event.sender.getOwnerBrowserWindow(); // 获取发送消息的渲染进程所属的浏览器窗口对象
+            // 打开模型文件 name:open
             this.execute(data.name, data.value || null, owner);
-            event.returnValue = null;
+            event.returnValue = null; // 在某些情况下，这个属性可以被用来向渲染进程发送一个同步的响应。
         });
 
         electron.app.on('will-finish-launching', () => {
@@ -201,6 +204,7 @@ app.Application = class {
                     }
                     // create new window
                     if (view == null) {
+                        // todo 创建一个视图 打开
                         view = this._views.openView();
                     }
                     view.open(path);

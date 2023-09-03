@@ -1,0 +1,568 @@
+[
+    {
+    "type":     "pytorch",
+    "target":   "alexnet_traced.pt.zip",
+    "source":   "https://github.com/lutzroeder/netron/files/6096602/alexnet_traced.pt.zip",
+    "format":   "TorchScript v1.6",
+    "link":     "https://github.com/lutzroeder/netron/issues/281"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "alexnet.pkl.pth.zip",
+    "source":   "https://github.com/lutzroeder/netron/files/5213453/alexnet.pkl.pth.zip",
+    "format":   "PyTorch v0.1.10",
+    "link":     "https://github.com/lutzroeder/netron/issues/133"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "alexnet.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/6096605/alexnet.pt.zip[alexnet.pt]",
+    "format":   "TorchScript v1.6",
+    "link":     "https://github.com/lutzroeder/netron/issues/281"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "alexnet.ptl",
+    "source":   "https://github.com/lutzroeder/netron/files/7340000/alexnet.ptl.zip[alexnet.ptl]",
+    "format":   "TorchScript v1.6",
+    "link":     "https://github.com/lutzroeder/netron/issues/827"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "alexnet.zip.pth",
+    "source":   "https://github.com/lutzroeder/netron/files/6096607/alexnet.zip.pth.zip[alexnet.zip.pth]",
+    "format":   "PyTorch v1.6",
+    "link":     "https://github.com/lutzroeder/netron/issues/133"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "bert-base-uncased.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/7705212/bert-base-uncased.pt.zip[bert-base-uncased.pt]",
+    "format":   "TorchScript v1.6",
+    "link":     "https://github.com/lutzroeder/netron/issues/842"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "blitz_cifar10_tutorial.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/3748500/blitz_cifar10_tutorial.zip[blitz_cifar10_tutorial.pt]",
+    "format":   "TorchScript v1.3",
+    "link":     "https://github.com/lutzroeder/netron/issues/281"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "blitz_neural_networks_tutorial.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/3748989/blitz_neural_networks_tutorial.zip[blitz_neural_networks_tutorial.pt]",
+    "format":   "TorchScript v1.3",
+    "link":     "https://github.com/lutzroeder/netron/issues/281"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "blitz_neural_networks_tutorial_traced.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/3748989/blitz_neural_networks_tutorial.zip[blitz_neural_networks_tutorial_traced.pt]",
+    "format":   "TorchScript v1.3",
+    "link":     "https://github.com/lutzroeder/netron/issues/281"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "boolean.pkl.pth",
+    "source":   "https://github.com/lutzroeder/netron/files/5435851/boolean.zip[boolean.pkl.pth]",
+    "format":   "PyTorch v0.1.10",
+    "link":     "https://github.com/lutzroeder/netron/issues/472"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "boolean.zip.pth",
+    "source":   "https://github.com/lutzroeder/netron/files/5435851/boolean.zip[boolean.pkl.pth]",
+    "format":   "PyTorch v0.1.10",
+    "link":     "https://github.com/lutzroeder/netron/issues/472"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "bvlc_googlenet.caffemodel.pth",
+    "source":   "https://www.dropbox.com/s/2ljm35ztj6hllcu/bvlc_googlenet.caffemodel.pth?dl=1",
+    "format":   "PyTorch v0.1.10",
+    "link":     "https://sea-region.github.com/yuminsuh/part_bilinear_reid/issues/2"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "ckpt.t7",
+    "source":   "https://raw.githubusercontent.com/babajide07/Redundant-Feature-Pruning-Pytorch-Implementation/master/checkpoint/ckpt.t7",
+    "format":   "PyTorch v0.1.10",
+    "link":     "https://github.com/babajide07/Redundant-Feature-Pruning-Pytorch-Implementation"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "cruise_cutin_vehicle_model.pt",
+    "source":   "https://raw.githubusercontent.com/ApolloAuto/apollo/master/modules/prediction/data/cruise_cutin_vehicle_model.pt",
+    "format":   "TorchScript v1.0",
+    "producer": "pytorch v1.0",
+    "link":     "https://github.com/ApolloAuto/apollo"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "cruise_go_vehicle_model.pt",
+    "source":   "https://raw.githubusercontent.com/ApolloAuto/apollo/master/modules/prediction/data/cruise_go_vehicle_model.pt",
+    "format":   "TorchScript v1.0",
+    "link":     "https://github.com/ApolloAuto/apollo"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "complex_tensor.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/9108149/complex_tensor.pt.zip[complex_tensor.pt]",
+    "format":   "PyTorch v1.6",
+    "link":     "https://github.com/lutzroeder/netron/issues/720"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "data.pkl",
+    "source":   "https://github.com/lutzroeder/netron/files/9795497/data.pkl.zip[data.pkl]",
+    "format":   "PyTorch Pickle",
+    "error":    "PyTorch data.pkl format not supported.",
+    "link":     "https://github.com/lutzroeder/netron/issues/720"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "d2go.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/6370675/d2go.pt.zip[d2go.pt]",
+    "format":   "TorchScript v1.7",
+    "link":     "https://github.com/lutzroeder/netron/issues/732"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "deeplabv3_scripted.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/5604999/deeplabv3_scripted.pt.zip[deeplabv3_scripted.pt]",
+    "format":   "TorchScript v1.6",
+    "link":     "https://github.com/lutzroeder/netron/issues/630"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "deeplabv3_scripted.ptl",
+    "source":   "https://github.com/lutzroeder/netron/files/9562007/deeplabv3_scripted.ptl.zip[deeplabv3_scripted.ptl]",
+    "format":   "TorchScript v1.6",
+    "link":     "https://github.com/lutzroeder/netron/issues/842"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "DCGAN2.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/9075628/DCGAN2.pt.zip[DCGAN2.pt]",
+    "format":   "PyTorch Package v1.9",
+    "link":     "https://github.com/lutzroeder/netron/issues/928"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "densenet161_traced.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/6096613/densenet161_traced.pt.zip[densenet161_traced.pt]",
+    "action":   "skip-render",
+    "link":     "https://pytorch.org/docs/stable/torchvision/models.html"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "densenet161.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/6096614/densenet161.pt.zip[densenet161.pt]",
+    "action":   "skip-render",
+    "link":     "https://pytorch.org/docs/stable/torchvision/models.html"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "densenet161.zip.pth",
+    "source":   "https://github.com/lutzroeder/netron/files/6096621/densenet161.zip.pth.zip[densenet161.zip.pth]",
+    "link":     "https://pytorch.org/docs/stable/torchvision/models.html"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "densenet161.mar",
+    "source":   "https://torchserve.pytorch.org/mar_files/densenet161.mar",
+    "format":   "PyTorch v0.1.10",
+    "link":     "https://github.com/lutzroeder/netron/issues/286"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "DRNL4x_dual_model.pth",
+    "source":   "https://github.com/lutzroeder/netron/files/5505677/DRNL4x_dual_model.pth.zip[DRNL4x_dual_model.pth]",
+    "format":   "PyTorch v0.1.10",
+    "link":     "https://github.com/lutzroeder/netron/issues/543"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "ENet.pth",
+    "source":   "https://github.com/lutzroeder/netron/files/5368544/ENet.pth.zip[ENet.pth]",
+    "format":   "PyTorch v0.1.10",
+    "link":     "https://github.com/lutzroeder/netron/issues/133"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "fairseq.lightweightconv.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/9145928/fairseq.lightweightconv.pt.zip[fairseq.lightweightconv.pt]",
+    "format":   "TorchScript v1.6",
+    "link":     "https://github.com/lutzroeder/netron/issues/931"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "fasterrcnn_resnet50_fpn.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/7677467/fasterrcnn_resnet50_fpn.pt.zip[fasterrcnn_resnet50_fpn.pt]",
+    "error":    "Unsupported torch.add expression type.",
+    "link":     "https://github.com/lutzroeder/netron/issues/689"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "from_numpy.pth",
+    "source":   "https://github.com/lutzroeder/netron/files/9639598/from_numpy.pth.zip[from_numpy.pth]",
+    "format":   "PyTorch v1.6",
+    "link":     "https://github.com/lutzroeder/netron/issues/720"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "fruit_veg_model.pkl",
+    "source":   "https://github.com/lutzroeder/netron/files/9265633/fruit_veg_model.pkl.zip[fruit_veg_model.pkl]",
+    "format":   "PyTorch v1.6",
+    "link":     "https://github.com/lutzroeder/netron/issues/720"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "gcn2_tiny_320x240.pb",
+    "source":   "https://raw.githubusercontent.com/jiexiong2016/GCNv2_SLAM/master/GCN2/gcn2_tiny_320x240.pt",
+    "format":   "TorchScript v1.0",
+    "link":     "https://github.com/jiexiong2016/GCNv2_SLAM"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "gpt2.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/11585383/gpt2.pt.zip[gpt2.pt]",
+    "format":   "TorchScript v1.12",
+    "link":     "https://github.com/lutzroeder/netron/issues/842"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "inception_v3_traced.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/6096627/inception_v3_traced.pt.zip[inception_v3_traced.pt]",
+    "link":     "https://github.com/lutzroeder/netron/issues/281"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "inception_v3.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/6096628/inception_v3.pt.zip[inception_v3.pt]",
+    "link":     "https://github.com/lutzroeder/netron/issues/281"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "inception_v3.pkl.pth.zip",
+    "source":   "https://github.com/lutzroeder/netron/files/5213454/inception_v3.pkl.pth.zip",
+    "format":   "PyTorch v0.1.10",
+    "link":     "https://github.com/lutzroeder/netron/issues/133"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "inception_v3.zip.pth",
+    "source":   "https://github.com/lutzroeder/netron/files/6096630/inception_v3.zip.pth.zip[inception_v3.zip.pth]",
+    "link":     "https://github.com/lutzroeder/netron/issues/133"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "iv3_pertensor.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/5212009/iv3_pertensor.zip[iv3_pertensor.pt]",
+    "format":   "TorchScript v1.5",
+    "link":     "https://github.com/lutzroeder/netron/issues/546"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "junction_mlp_vehicle_model.pt",
+    "source":   "https://raw.githubusercontent.com/ApolloAuto/apollo/master/modules/prediction/data/junction_mlp_vehicle_model.pt",
+    "format":   "TorchScript v1.0",
+    "link":     "https://github.com/ApolloAuto/apollo"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "labels.pth",
+    "source":   "https://github.com/lutzroeder/netron/files/7350657/labels.pth.zip[labels.pth]",
+    "format":   "PyTorch v1.6",
+    "link":     "https://github.com/lutzroeder/netron/issues/720"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "lane_scanning_vehicle_model.pt",
+    "source":   "https://raw.githubusercontent.com/ApolloAuto/apollo/master/modules/prediction/data/lane_scanning_vehicle_model.pt",
+    "format":   "TorchScript v1.0",
+    "link":     "https://github.com/ApolloAuto/apollo"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "lite_real_sr.ptl",
+    "source":   "https://github.com/lutzroeder/netron/files/12137599/lite_real_sr.ptl.zip[lite_real_sr.ptl]",
+    "format":   "TorchScript v1.12",
+    "action":   "skip-render",
+    "link":     "https://github.com/lutzroeder/netron/issues/842"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "LMModel1.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/7726055/LMModel1.zip[LMModel1.pt]",
+    "format":   "TorchScript v1.6",
+    "link":     "https://github.com/lutzroeder/netron/issues/842"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "mask_depthwise_conv.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/6186157/mask_depthwise_conv.pt.zip[mask_depthwise_conv.pt]",
+    "format":   "TorchScript v1.3",
+    "link":     "https://github.com/lutzroeder/netron/issues/281"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "mask_model.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/10080302/mask_model.pt.zip[mask_model.pt]",
+    "format":   "TorchScript v1.7",
+    "error":    "Unsupported torch.add expression type.",
+    "link":     "https://github.com/lutzroeder/netron/issues/842"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "mask_r_cnn.pth",
+    "source":   "https://raw.githubusercontent.com/facebookresearch/kill-the-bits/master/src/models/compressed/mask_r_cnn.pth",
+    "format":   "PyTorch v0.1.10",
+    "link":     "https://github.com/facebookresearch/kill-the-bits/tree/master/src/models/compressed"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "mnist_bfloat16.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/8556403/mnist_bfloat16.pt.zip[mnist_bfloat16.pt]",
+    "format":   "PyTorch v1.6",
+    "link":     "https://github.com/lutzroeder/netron/issues/720"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "mnist_linear.ckpt",
+    "source":   "https://github.com/lutzroeder/netron/files/3585288/mnist_linear_torchscript.zip[mnist_linear.ckpt]",
+    "format":   "PyTorch v0.1.10",
+    "link":     "https://github.com/lutzroeder/netron/issues/281"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "mnist_linear_dynamic_quantized.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/4774023/mnist_linear_dynamic_quantized.zip[mnist_linear_dynamic_quantized.pt]",
+    "format":   "PyTorch v0.1.10",
+    "link":     "https://github.com/lutzroeder/netron/issues/519"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "mnist_linear_static_quantized.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/4774022/mnist_linear_static_quantized.zip[mnist_linear_static_quantized.pt]",
+    "format":   "PyTorch v0.1.10",
+    "link":     "https://github.com/lutzroeder/netron/issues/519"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "mnist_linear_torchscript_1.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/3585288/mnist_linear_torchscript.zip[mnist_linear_torchscript_1.pt]",
+    "format":   "TorchScript v1.1",
+    "link":     "https://github.com/lutzroeder/netron/issues/281"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "mnist_linear_torchscript_2.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/3585288/mnist_linear_torchscript.zip[mnist_linear_torchscript_2.pt]",
+    "format":   "TorchScript v1.3",
+    "link":     "https://github.com/lutzroeder/netron/issues/281"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "mobilefacenet_scripted.pt",
+    "source":   "https://github.com/foamliu/MobileFaceNet/releases/download/v1.0/mobilefacenet_scripted.pt",
+    "format":   "TorchScript v1.3",
+    "link":     "https://github.com/foamliu/MobileFaceNet"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "mobilenet_quantization_scripted_quantized_1.pth",
+    "source":   "https://github.com/lutzroeder/netron/files/5394885/mobilenet_quantization_scripted_quantized.zip[mobilenet_quantization_scripted_quantized_1.pth]",
+    "format":   "TorchScript v1.3",
+    "link":     "https://github.com/lutzroeder/netron/issues/421"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "mobilenet_quantization_scripted_quantized_2.pth",
+    "source":   "https://github.com/lutzroeder/netron/files/5394885/mobilenet_quantization_scripted_quantized.zip[mobilenet_quantization_scripted_quantized_2.pth]",
+    "format":   "TorchScript v1.6",
+    "link":     "https://github.com/lutzroeder/netron/issues/421"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "mobilenet_v2.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/6096624/mobilenet_v2.pt.zip[mobilenet_v2.pt]",
+    "link":     "https://github.com/lutzroeder/netron/issues/281"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "mobilenet_v2_traced.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/6096623/mobilenet_v2_traced.pt.zip[mobilenet_v2_traced.pt]",
+    "link":     "https://github.com/lutzroeder/netron/issues/281"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "model.ptl",
+    "source":   "https://github.com/lutzroeder/netron/files/11149538/model.ptl.zip[model.ptl]",
+    "format":   "TorchScript v1.6",
+    "link":     "https://github.com/lutzroeder/netron/issues/1067"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "model_0_epochs.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/6765569/model_0_epochs.pt.zip[model_0_epochs.pt]",
+    "format":   "TorchScript v1.6",
+    "link":     "https://github.com/lutzroeder/netron/issues/647"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "model_fnet.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/8457286/model_fnet.pt.zip[model_fnet.pt]",
+    "format":   "TorchScript v1.6",
+    "link":     "https://github.com/lutzroeder/netron/issues/882"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "model-reddit16-f140225004_2.pt1",
+    "source":   "https://raw.githubusercontent.com/pytorch/android-demo-app/master/PyTorchDemoApp/app/src/main/assets/model-reddit16-f140225004_2.pt1",
+    "format":   "TorchScript v1.3",
+    "link":     "https://github.com/pytorch/android-demo-app"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "mobilenetv2-quant_full-nnapi.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/7406443/mobilenetv2-quant_full.zip[mobilenetv2-quant_full/mobilenetv2-quant_full-nnapi.pt]",
+    "format":   "TorchScript v1.6",
+    "link":     "https://github.com/lutzroeder/netron/issues/644"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "mobilenetv2-quant_full-cpu.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/7406443/mobilenetv2-quant_full.zip[mobilenetv2-quant_full/mobilenetv2-quant_full-cpu.pt]",
+    "format":   "TorchScript v1.6",
+    "link":     "https://github.com/lutzroeder/netron/issues/644"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "module_000007.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/9075631/module_000007.pt.zip[module_000007.pt]",
+    "error":    "ValueError: not enough values to unpack (expected 4, actual 0).",
+    "link":     "https://github.com/lutzroeder/netron/issues/842"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "mtcnn.pt",
+    "source":   "https://raw.githubusercontent.com/deepware/dFace/master/models/mtcnn.pt",
+    "format":   "PyTorch v0.1.10",
+    "link":     "https://github.com/deepware/dface/tree/master/dface"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "netron_issue_313_v1.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/3721266/netron_issue_313.zip[netron_issue_313_v1.pt]",
+    "format":   "TorchScript v1.0",
+    "link":     "https://github.com/lutzroeder/netron/issues/313"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "netron_issue_313_v2.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/3721266/netron_issue_313.zip[netron_issue_313_v2.pt]",
+    "format":   "TorchScript v1.3",
+    "link":     "https://github.com/lutzroeder/netron/issues/313"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "netron_issue_432_activation.pth",
+    "source":   "https://github.com/lutzroeder/netron/files/4226686/netron_issue_432_activation.pth.zip[netron_issue_432_activation.pth]",
+    "format":   "TorchScript v1.3",
+    "link":     "https://github.com/lutzroeder/netron/issues/432"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "netron_issue_432_bmm.pth",
+    "source":   "https://github.com/lutzroeder/netron/files/4226688/netron_issue_432_bmm.pth.zip[netron_issue_432_bmm.pth]",
+    "format":   "TorchScript v1.3",
+    "link":     "https://github.com/lutzroeder/netron/issues/432"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "netron_issue_432_constant_pad_2d.pth",
+    "source":   "https://github.com/lutzroeder/netron/files/4226690/netron_issue_432_constant_pad_2d.pth.zip[netron_issue_432_constant_pad_2d.pth]",
+    "format":   "TorchScript v1.3",
+    "link":     "https://github.com/lutzroeder/netron/issues/432"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "netron_issue_529.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/4834633/netron_issue_529.zip[netron_issue_529.pt]",
+    "format":   "TorchScript v1.5",
+    "link":     "https://github.com/lutzroeder/netron/issues/529"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "netron_issue_529_traced.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/4834633/netron_issue_529.zip[netron_issue_529_traced.pt]",
+    "format":   "TorchScript v1.5",
+    "link":     "https://github.com/lutzroeder/netron/issues/529"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "netron_issue_545_caffe2.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/5690362/netron_issue_545_caffe2.pt.zip[netron_issue_545_caffe2.pt]",
+    "format":   "TorchScript v1.6",
+    "link":     "https://github.com/lutzroeder/netron/issues/545"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "netron_issue_547_1.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/5137393/netron_issue_547_1.zip[netron_issue_547_1.pt]",
+    "error":    "Unsupported torch.add expression type.",
+    "link":     "https://github.com/lutzroeder/netron/issues/547"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "netron_issue_609.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/5309279/netron_issue_609.pt.zip[netron_issue_609.pt]",
+    "format":   "TorchScript v1.6",
+    "link":     "https://github.com/lutzroeder/netron/issues/609"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "netron_issue_677.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/5923252/netron_issue_677.pt.zip[netron_issue_677.pt]",
+    "format":   "TorchScript v1.6",
+    "link":     "https://github.com/lutzroeder/netron/issues/677"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "netron_issue_920.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/8857486/netron_issue_920.pt.zip[netron_issue_920.pt]",
+    "format":   "TorchScript v1.6",
+    "link":     "https://github.com/lutzroeder/netron/issues/637"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "norm_inplace.pt.zip",
+    "source":   "https://github.com/lutzroeder/netron/files/4516621/norm_inplace.pt.zip",
+    "format":   "TorchScript v1.3",
+    "link":     "https://github.com/lutzroeder/netron/issues/473"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "opt_xx.pt",
+    "source":   "https://github.com/lutzroeder/netron/files/8747908/opt_xx.pt.zip[opt_xx.pt]",
+    "format":   "TorchScript v1.6",
+    "error":    "Slicing expected array",
+    "link":     "https://github.com/lutzroeder/netron/issues/913"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "pedestrian_interaction_position_embedding.pt",
+    "source":   "https://raw.githubusercontent.com/ApolloAuto/apollo/master/modules/prediction/data/pedestrian_interaction_position_embedding.pt",
+    "format":   "TorchScript v1.0",
+    "link":     "https://github.com/ApolloAuto/apollo"
+  },
+  {
+    "type":     "pytorch",
+    "target":   "pedestrian_interaction_prediction_layer.pt",
+    "source":   "https://raw.githubusercontent.com/ApolloAuto/apollo/master/modules/prediction/data/pedestrian_interaction_prediction_layer.pt",
+    "format":   "TorchScript v1.0",
+    "link":     "https://github.com/ApolloAuto/apollo"
+  }
+]

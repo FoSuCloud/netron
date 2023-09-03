@@ -1,0 +1,9 @@
+[
+  {
+    "type":     "onnx",
+    "target":   "candy.onnx",
+    "source":   "https://raw.githubusercontent.com/Microsoft/Windows-Machine-Learning/master/Samples/FNSCandyStyleTransfer/UWP/cs/Assets/candy.onnx",
+    "format":   "ONNX v3",
+    "link":     "https://github.com/Microsoft/Windows-Machine-Learning/tree/master/Samples/FNSCandyStyleTransfer/UWP/cs/Assets"
+  }
+]

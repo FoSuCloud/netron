@@ -40,7 +40,7 @@ const writeLine = (message) => {
 
 const access = async (path) => {
     try {
-        await fs.access(path);
+        await fs.access(path); // 测试用户对路径指定的文件或目录的权限
         return true;
     } catch (error) {
         return false;
@@ -86,6 +86,7 @@ const exec = async (command, encoding) => {
     if (encoding) {
         return child_process.execSync(command, { cwd: __dirname, encoding: encoding });
     }
+    // 开启子进程执行命令 在子进程完全关闭后才会返回
     child_process.execSync(command, { cwd: __dirname, stdio: [ 0,1,2 ] });
     return '';
     /*
@@ -210,6 +211,7 @@ const install = async () => {
 
 const start = async () => {
     await install();
+    // 启动 桌面程序,执行package.json的main 入口文件app.js
     await exec('npx electron .');
 };
 

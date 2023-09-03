@@ -698,7 +698,7 @@ class Target {
 const main = async () => {
     try {
         let patterns = process.argv.length > 2 ? process.argv.slice(2) : [];
-        const configuration = await fs.readFile(__dirname + '/models.json', 'utf-8');
+        const configuration = await fs.readFile(__dirname + '/pytorch.json', 'utf-8');
         let targets = JSON.parse(configuration).reverse();
         if (patterns.length > 0) {
             const exists = await Promise.all(patterns.map((pattern) => access(pattern)));

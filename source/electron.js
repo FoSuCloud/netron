@@ -203,9 +203,11 @@ host.ElectronHost = class {
             this._element('titlebar-toggle').setAttribute('title', data.maximized ? 'Restore' : 'Maximize');
         });
         electron.ipcRenderer.sendSync('update-window-state', {});
+        // 点击按钮
         const openFileButton = this._element('open-file-button');
         if (openFileButton) {
             openFileButton.addEventListener('click', () => {
+                // todo 执行open命令
                 this.execute('open');
             });
         }
@@ -297,6 +299,7 @@ host.ElectronHost = class {
     }
 
     execute(name, value) {
+        // 表示在 Electron 应用程序中使用 IPC（进程间通信）从渲染进程发送消息给主进程。
         electron.ipcRenderer.send('execute', { name: name, value: value });
     }
 

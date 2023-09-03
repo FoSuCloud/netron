@@ -502,12 +502,18 @@ host.BrowserHost = class {
     }
 
     async _open(file, files) {
-        this._view.show('welcome spinner');
+        // this._view 指向 view.js
+        this._view.show('welcome spinner'); // 开启一个欢迎页面
+        // 创建了一个新的BrowserFileContext对象，该对象用于处理用户选择的文件
         const context = new host.BrowserHost.BrowserFileContext(this, file, files);
         try {
+            // 等待文件读取完毕
             await context.open();
+            // 设置了一个名为session_engaged的遥测数据，表示用户已经开始了一个新的会话。
             this._telemetry.set('session_engaged', 1);
+            // 异步打开一个新的视图，该视图用于显示用户选择的文件。
             await this._view.open(context);
+            // 隐藏欢迎界面和加载动画
             this._view.show(null);
             this.document.title = files[0].name;
         } catch (error) {

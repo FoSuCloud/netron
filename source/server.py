@@ -271,30 +271,33 @@ def serve(file, data, address=None, browse=False, verbosity=1):
         address (tuple, optional): A (host, port) tuple, or a port number.
         browse (bool, optional): Launch web browser. Default: True
         log (bool, optional): Log details to console. Default: False
-
+    中文
+    file（字符串）：要提供的模型文件。需要检测格式。
+    数据（字节）：要提供的模型数据。 None 不会从文件加载数据。
     Returns:
         A (host, port) address tuple.
     '''
+    # 控制日志的详细程度
     verbosity = { '0': 0, 'quiet': 0, '1': 1, 'default': 1, '2': 2, 'debug': 2 }[str(verbosity)]
 
     if not data and file and not os.path.exists(file):
         raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), file)
-
+    # 这行代码创建了一个_ContentProvider对象，该对象用于提供模型数据
     content = _ContentProvider(data, file, file)
-
+    # 检查用户提供的模型数据是否为某种特定类型（bytearray）。如果是，程序将尝试打开模型，并将模型数据转换为JSON格式。
     if data and not isinstance(data, bytearray) and isinstance(data.__class__, type):
         _log(verbosity > 1, 'Experimental\n')
         model = _open(data)
         if model:
             text = json.dumps(model.to_json(), indent=4, ensure_ascii=False)
             content = _ContentProvider(text.encode('utf-8'), 'model.netron', file)
-
+    # 将address参数转换为一个(host, port)元组
     address = _make_address(address)
     if isinstance(address[1], int) and address[1] != 0:
         stop(address)
     else:
         address = _make_port(address)
-
+    # 创建一个线程,用于运行服务器
     thread = _HTTPServerThread(content, address, verbosity)
     thread.start()
     while not thread.alive():

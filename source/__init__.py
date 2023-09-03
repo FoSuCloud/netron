@@ -25,6 +25,7 @@ def main():
         choices=[ 'quiet', 'default', 'debug', '0', '1', '2' ], default='default')
     parser.add_argument('--version', help="print version", action='store_true')
     args = parser.parse_args()
+    # 检查用户提供的模型文件是否存在。如果args.file有值并且文件不存在，程序将打印错误信息并退出
     if args.file and not os.path.exists(args.file):
         print("Model file '" + args.file + "' does not exist.")
         sys.exit(2)
@@ -32,7 +33,9 @@ def main():
         print(__version__)
         sys.exit(0)
     address = (args.host, args.port) if args.host else args.port if args.port else None
+    # 启动服务器，会新建一个线程
     start(args.file, address=address, browse=args.browse, verbosity=args.verbosity)
+    # 等待服务器停止，阻塞当前进程
     wait()
     sys.exit(0)
 

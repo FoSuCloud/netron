@@ -618,6 +618,7 @@ view.View = class {
         this._sidebar.close();
         await this._timeout(2);
         try {
+            // 模型工厂
             const model = await this._modelFactoryService.open(context);
             const format = [];
             if (model.format) {
@@ -5097,18 +5098,25 @@ view.ModelFactoryService = class {
 
     async open(context) {
         try {
+            console.log("==============context==============" + context);
+            // 异步打开用户选择的模型文件的签名
             await this._openSignature(context);
+            // 创建了一个新的ModelContext对象，该对象用于处理用户选择的模型文件
             const modelContext = new view.ModelContext(context);
+            // 异步打开一个新的模型上下文
             const model = await this._openContext(modelContext);
             if (!model) {
+                // 获取模型文件中的所有条目
                 const entries = modelContext.entries();
                 if (!entries || entries.size === 0) {
                     this._unsupported(modelContext);
                 }
+                // 异步打开模型文件中的所有条目
                 const context = await this._openEntries(entries);
                 if (!context) {
                     this._unsupported(modelContext);
                 }
+                // 返回打开的模型上下文
                 return this._openContext(context);
             }
             return model;
