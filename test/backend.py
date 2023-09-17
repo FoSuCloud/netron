@@ -69,8 +69,18 @@ def _test_torchscript_quantized():
     torch._C._jit_pass_inline(trace.graph) # pylint: disable=protected-access
     netron.serve('d2go', trace)
 
+
+def _test_pickle():
+    file = os.path.join(test_data_dir, '_', 'simple_model.pth')
+    torch = __import__('torch') # 模块导入
+    model = torch.load(os.path.join(test_data_dir, 'pytorch', file)) # 模型加载
+    # 模型优化 torch._C._jit_pass_inline函数用于将模型中的子图内联到主图中，以提高模型的运行效率
+    torch._C._jit_pass_inline(model.graph) # pylint: disable=protected-access
+    netron.serve(file, model) # 用于启动Netron服务器并在浏览器中展示模型。这一步对应的是模型展示阶段
+
 if __name__ == '__main__':
     _test_onnx()
+#     _test_pickle()
     # _test_onnx_iterate()
 
     # _test_torchscript('alexnet.pt')

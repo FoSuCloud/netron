@@ -34,3 +34,18 @@ Netron还支持通过Python命令行工具来查看模型。这是通过在setup
 然后提示Serving 'third_party/test/onnx/candy.onnx' at http://localhost:8080
 还是要在网页上查看
 
+#### 混淆
+* terser source/*.js -o output.js
+
+#### 打包
+* pkg 打包工具`默认情况下不会将源代码文件直接打包进可执行文件中`。它通常会将可执行文件与源代码文件分开，以保持可执行文件的大小较小。
+* 你可以使用 --output 标志来指定输出的可执行文件名称，`并将源代码文件包含在其中`
+* pkg . -t node18-win-x64 --output model-view.exe
+
+* pkg . -t node18-win-x64 默认
+
+* 但是为了可以配置assets资源，我们还需要在package.json配置pkg配置
+* 改为使用 `pkg package.json`打包
+
+#### 运行
+*  .\dist\netron.exe 运行
