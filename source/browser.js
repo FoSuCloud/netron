@@ -7,7 +7,7 @@ host.BrowserHost = class {
         this._window = window;
         this._navigator = window.navigator;
         this._document = window.document;
-        const base = require('./base');
+        const base = require('./parser/base');
         this._telemetry = new base.Telemetry(this._window);
         this._window.eval = () => {
             throw new Error('window.eval() not supported.');
@@ -27,7 +27,7 @@ host.BrowserHost = class {
             packaged: this._meta.version && this._meta.version[0] !== '0.0.0',
             platform: /(Mac|iPhone|iPod|iPad)/i.test(this._navigator.platform) ? 'darwin' : undefined,
             agent: this._navigator.userAgent.toLowerCase().indexOf('safari') !== -1 && this._navigator.userAgent.toLowerCase().indexOf('chrome') === -1 ? 'safari' : '',
-            repository: this._element('logo-github').getAttribute('href'),
+            repository: 'issue',  //todo
             menu: true
         };
         if (!/^\d\.\d\.\d$/.test(this.version)) {
@@ -215,7 +215,7 @@ host.BrowserHost = class {
             });
             const mobileSafari = this.environment('platform') === 'darwin' && navigator.maxTouchPoints && navigator.maxTouchPoints > 1;
             if (!mobileSafari) {
-                const base = require('./base');
+                const base = require('./parser/base');
                 const extensions = new base.Metadata().extensions.map((extension) => '.' + extension);
                 openFileDialog.setAttribute('accept', extensions.join(', '));
             }
@@ -417,7 +417,7 @@ host.BrowserHost = class {
                 progress(0);
                 if (request.status == 200) {
                     if (request.responseType == 'arraybuffer') {
-                        const base = require('./base');
+                        const base = require('./parser/base');
                         const buffer = new Uint8Array(request.response);
                         const stream = new base.BinaryStream(buffer);
                         resolve(stream);
@@ -536,7 +536,7 @@ host.BrowserHost = class {
                 this.error('Error while loading Gist.', 'Gist does not contain a model file.');
                 return;
             }
-            const base = require('./base');
+            const base = require('./parser/base');
             const file = json.files[key];
             const identifier = file.filename;
             const encoder = new TextEncoder();
@@ -672,7 +672,7 @@ host.BrowserHost.BrowserFileContext = class {
                 } else {
                     const buffer = new Uint8Array(e.target.result);
                     if (position === 0 && buffer.length === blob.size) {
-                        const base = require('./base');
+                        const base = require('./parser/base');
                         const stream = new base.BinaryStream(buffer);
                         resolve(stream);
                     } else {

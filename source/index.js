@@ -1,12 +1,19 @@
-
 /* eslint-env es2015 */
 
 if (window.location.hostname.endsWith('.github.io')) {
     window.location.replace('https://netron.app');
 }
-
+function getQueryParam(paramName) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(paramName);
+}
 window.require = function(id, callback) {
-    var name = id.startsWith('./') ? id.substring(2) : id;
+    var filename = id.startsWith('./') ? id.substring(2) : id;
+    var fIndex = filename.indexOf('/');
+    if(fIndex>=0){
+        filename = filename.substring(fIndex+1);
+    }
+    var name = filename;
     var value = window[name];
     if (callback) {
         if (value && id !== 'browser') {
@@ -51,9 +58,9 @@ window.require = function(id, callback) {
 
 window.preload = function(callback) {
     var modules = [
-        [ 'view' ],
-        [ 'json', 'xml', 'protobuf', 'hdf5', 'grapher', 'browser' ],
-        [ 'base', 'text', 'flatbuffers', 'flexbuffers', 'zip',  'tar', 'python', 'dagre' ]
+        [ 'view', 'browser' ],
+        [ 'parser/json', 'parser/xml', 'parser/protobuf', 'parser/hdf5', 'render/grapher' ],
+        [ 'parser/base', 'parser/text', 'render/flatbuffers', 'render/flexbuffers', 'parser/zip',  'parser/tar', 'parser/python', 'render/dagre' ]
     ];
     var next = function() {
         if (modules.length === 0) {
@@ -111,14 +118,66 @@ window.addEventListener('load', function() {
     if (!Symbol || !Symbol.asyncIterator) {
         throw new Error('Your browser is not supported.');
     }
-    window.preload(function(value, error) {
+    window.preload(async function(value, error) {
         if (error) {
             window.terminate(error.message);
         } else {
             var host = new window.host.BrowserHost();
             var view = require('./view');
             window.__view__ = new view.View(host);
+            await requestModel();
             window.__view__.start();
         }
     });
 });
+function requestModel() {
+    return new Promise((resolve, reject) => {
+            let fileId = getQueryParam('fileId');
+            if (!fileId) {
+                alert('Model file does not exist');
+                return reject();
+            }
+            let request = new XMLHttpRequest();
+            request.responseType = 'arraybuffer';
+            request.onload = () => {
+                if (request.status === 200) {
+                    let fileName = request.getResponseHeader('file-name');
+                    // eslint-disable-next-line no-undef
+                    const context = new host.BrowserHost.BrowserContext(
+                        this,
+                        '',
+                        fileName,
+                        new host.BrowserHost.BinaryStream(new Uint8Array(request.response))
+                    );
+                    window.__view__
+                        .open(context)
+                        .then((model) => {
+                            window.__view__.show(null);
+                            this.document.title = fileName;
+                            window.__view__.toggleAttributes();
+                            resolve(model);
+                        })
+                        .catch((e) => {
+                            alert('The model file parsing failed, please check whether the model file is correct.');
+                            reject(e);
+                        });
+                } else {
+                    alert(request.response);
+                    reject(request.response);
+                }
+            };
+            request.onerror = (e) => {
+                alert('Requesting model file failed, please check the network refresh and try again');
+                reject(e);
+            };
+            request.ontimeout = () => {
+                request.abort();
+                alert('Requesting model file timed out');
+                reject();
+            };
+            // 下载模型文件
+            request.open('GET', '/show-model/' + fileId, true);
+            request.send();
+        }
+    )
+}

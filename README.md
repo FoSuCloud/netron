@@ -37,6 +37,7 @@ Netron还支持通过Python命令行工具来查看模型。这是通过在setup
 #### 混淆
 * terser source/*.js -o output.js
 
+
 #### 打包
 * pkg 打包工具`默认情况下不会将源代码文件直接打包进可执行文件中`。它通常会将可执行文件与源代码文件分开，以保持可执行文件的大小较小。
 * 你可以使用 --output 标志来指定输出的可执行文件名称，`并将源代码文件包含在其中`
@@ -45,7 +46,13 @@ Netron还支持通过Python命令行工具来查看模型。这是通过在setup
 * pkg . -t node18-win-x64 默认
 
 * 但是为了可以配置assets资源，我们还需要在package.json配置pkg配置
-* 改为使用 `pkg package.json`打包
+* 改为使用 `pkg package.json`打包, node使用18.5.0
+
+#### 打包
+* parcel build source/index.html
+
+* 本地调试
+* npx parcel source/index.html
 
 #### 运行
 *  .\dist\netron.exe 运行
