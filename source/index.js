@@ -8,12 +8,7 @@ function getQueryParam(paramName) {
     return urlParams.get(paramName);
 }
 window.require = function(id, callback) {
-    var filename = id.startsWith('./') ? id.substring(2) : id;
-    var fIndex = filename.indexOf('/');
-    if(fIndex>=0){
-        filename = filename.substring(fIndex+1);
-    }
-    var name = filename;
+    var name = id.startsWith('./') ? id.substring(2) : id;
     var value = window[name];
     if (callback) {
         if (value && id !== 'browser') {
@@ -59,8 +54,8 @@ window.require = function(id, callback) {
 window.preload = function(callback) {
     var modules = [
         [ 'view', 'browser' ],
-        [ 'parser/json', 'parser/xml', 'parser/protobuf', 'parser/hdf5', 'render/grapher' ],
-        [ 'parser/base', 'parser/text', 'render/flatbuffers', 'render/flexbuffers', 'parser/zip',  'parser/tar', 'parser/python', 'render/dagre' ]
+        [ 'json', 'xml', 'protobuf', 'hdf5', 'grapher' ],
+        [ 'base', 'text', 'flatbuffers', 'flexbuffers', 'zip',  'tar', 'python', 'dagre' ]
     ];
     var next = function() {
         if (modules.length === 0) {
@@ -132,13 +127,12 @@ window.addEventListener('load', function() {
 });
 function requestModel() {
     return new Promise((resolve, reject) => {
-            let fileId = getQueryParam('fileId');
-            if (!fileId) {
+            let path = getQueryParam('path');
+            if (!path) {
                 alert('Model file does not exist');
                 return reject();
             }
             let request = new XMLHttpRequest();
-            request.responseType = 'arraybuffer';
             request.onload = () => {
                 if (request.status === 200) {
                     let fileName = request.getResponseHeader('file-name');
@@ -175,9 +169,16 @@ function requestModel() {
                 alert('Requesting model file timed out');
                 reject();
             };
-            // 下载模型文件
-            request.open('GET', '/show-model/' + fileId, true);
-            request.send();
+            // download model file
+            request.open('POST', 'http://127.0.0.1:9000/argus/execute' , true);
+            request.setRequestHeader("content-type",'application/json');
+            const body = {
+                "path": "modelchecking/1.0.0/model-checking/file",
+                "params":{
+                    "path":path
+                }
+            }
+            request.send(JSON.stringify(body));
         }
     )
 }

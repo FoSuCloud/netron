@@ -1,24 +1,73 @@
 module.exports = {
-    // 指定你的代码运行的环境，例如浏览器、Node.js等
     env: {
         browser: true,
         node: true,
         es6: true,
     },
-    // 解析器选项，可以根据需要进行配置
     parserOptions: {
-        ecmaVersion: 2021, // 使用的ECMAScript版本
-        sourceType: "module", // 使用的模块系统（"script"或"module"）
+        sourceType: "module",
     },
-    // 扩展已有的配置规则
     extends: [
-        "eslint:recommended", // 使用ESLint推荐的规则
-        // 添加其他扩展规则，例如"plugin:react/recommended"用于React项目
+        "eslint:recommended",
     ],
-    // 自定义规则，可以根据项目需求进行配置
     rules: {
-        // 例如，禁止使用console语句
+        "array-callback-return": "error",
+        "brace-style": "error",
+        "curly": "error",
+        "consistent-return": "error",
+        "default-case": "error",
+        "default-case-last": "error",
+        "indent": [
+            "error",
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "keyword-spacing": "error",
+        "linebreak-style": "off",
+        "no-array-constructor": "error",
+        "no-await-in-loop": "error",
         "no-console": "off",
-        // 添加其他自定义规则
+        "no-constructor-return": "error",
+        "no-duplicate-imports": "error",
+        "no-else-return": "error",
+        "no-extra-semi": "error",
+        "no-invalid-this": "error",
+        "no-iterator": "error",
+        "no-labels": "error",
+        "no-lone-blocks": "error",
+        "no-lonely-if": "error",
+        "no-promise-executor-return": "error",
+        "no-proto": "error",
+        "no-self-compare": "error",
+        "no-sequences": "error",
+        "no-template-curly-in-string": "error",
+        "no-trailing-spaces": "error",
+        "no-unmodified-loop-condition": "error",
+        "no-unreachable-loop": "error",
+        "no-unused-private-class-members": "error",
+        "no-use-before-define": "error",
+        "object-curly-spacing": [
+            "error",
+            "always"
+        ],
+        "prefer-const": [
+            "error",
+            {
+                "destructuring": "all"
+            }
+        ],
+        "require-atomic-updates": "error",
+        "semi": [
+            "error",
+            "always"
+        ],
+        "space-before-blocks": "error",
+        "space-in-parens": "error"
     },
+    "globals": {
+        "flatbuffers": "readonly",
+        "protobuf": "readonly"
+    }
 };

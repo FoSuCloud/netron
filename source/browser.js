@@ -1,38 +1,20 @@
-﻿
+
 var host = {};
 
 host.BrowserHost = class {
 
     constructor() {
-        this._window = window;
-        this._navigator = window.navigator;
-        this._document = window.document;
-        const base = require('./parser/base');
+        this._window = {};
+        this._document = {};
+        const base = require('./base');
         this._telemetry = new base.Telemetry(this._window);
         this._window.eval = () => {
             throw new Error('window.eval() not supported.');
         };
         this._meta = {};
-        for (const element of Array.from(this._document.getElementsByTagName('meta'))) {
-            if (element.name !== undefined && element.content !== undefined) {
-                this._meta[element.name] = this._meta[element.name] || [];
-                this._meta[element.name].push(element.content);
-            }
-        }
-        this._environment = {
-            name: this._document.title,
-            type: this._meta.type ? this._meta.type[0] : 'Browser',
-            version: this._meta.version ? this._meta.version[0] : null,
-            date: Array.isArray(this._meta.date) && this._meta.date.length > 0 && this._meta.date[0] ? new Date(this._meta.date[0].split(' ').join('T') + 'Z') : new Date(),
-            packaged: this._meta.version && this._meta.version[0] !== '0.0.0',
-            platform: /(Mac|iPhone|iPod|iPad)/i.test(this._navigator.platform) ? 'darwin' : undefined,
-            agent: this._navigator.userAgent.toLowerCase().indexOf('safari') !== -1 && this._navigator.userAgent.toLowerCase().indexOf('chrome') === -1 ? 'safari' : '',
-            repository: 'issue',  //todo
-            menu: true
-        };
-        if (!/^\d\.\d\.\d$/.test(this.version)) {
-            throw new Error('Invalid version.');
-        }
+        this._environment = new Map();
+        this._type = 'NodeJS';
+        this._version = '1.0.0';
     }
 
     get window() {
@@ -215,7 +197,7 @@ host.BrowserHost = class {
             });
             const mobileSafari = this.environment('platform') === 'darwin' && navigator.maxTouchPoints && navigator.maxTouchPoints > 1;
             if (!mobileSafari) {
-                const base = require('./parser/base');
+                const base = require('./base');
                 const extensions = new base.Metadata().extensions.map((extension) => '.' + extension);
                 openFileDialog.setAttribute('accept', extensions.join(', '));
             }
@@ -248,6 +230,25 @@ host.BrowserHost = class {
         this._view.show('welcome');
     }
 
+    initView(view){
+        this._view = view;
+    }
+    scan(buffer,identifier){
+        const context = new host.BrowserHost.Context(this,'',identifier,buffer);
+        const result = this._view.filter(context);
+        if(!result || !result.length){
+            return new Promise((resolve, reject) => {
+                reject();
+            })
+        }
+        return new Promise((resolve, reject) => {
+            this._view.open(context).then((model)=>{
+                resolve(model)
+            }).catch((err)=>{
+                reject(err)
+            })
+        })
+    }
     environment(name) {
         return this._environment[name];
     }
@@ -262,8 +263,9 @@ host.BrowserHost = class {
     }
 
     require(id) {
-        return new Promise((resolve, reject) => {
-            this.window.require(id, (module) => resolve(module), (error) => reject(error));
+        const url = id+'.js';
+        return new Promise((resolve) => {
+            resolve(require(url))
         });
     }
 
@@ -417,7 +419,7 @@ host.BrowserHost = class {
                 progress(0);
                 if (request.status == 200) {
                     if (request.responseType == 'arraybuffer') {
-                        const base = require('./parser/base');
+                        const base = require('./base');
                         const buffer = new Uint8Array(request.response);
                         const stream = new base.BinaryStream(buffer);
                         resolve(stream);
@@ -536,7 +538,7 @@ host.BrowserHost = class {
                 this.error('Error while loading Gist.', 'Gist does not contain a model file.');
                 return;
             }
-            const base = require('./parser/base');
+            const base = require('./base');
             const file = json.files[key];
             const identifier = file.filename;
             const encoder = new TextEncoder();
@@ -672,7 +674,7 @@ host.BrowserHost.BrowserFileContext = class {
                 } else {
                     const buffer = new Uint8Array(e.target.result);
                     if (position === 0 && buffer.length === blob.size) {
-                        const base = require('./parser/base');
+                        const base = require('./base');
                         const stream = new base.BinaryStream(buffer);
                         resolve(stream);
                     } else {
@@ -862,37 +864,4 @@ host.BrowserHost.Context = class {
     }
 };
 
-if (!('scrollBehavior' in window.document.documentElement.style)) {
-    const __scrollTo__ = Element.prototype.scrollTo;
-    Element.prototype.scrollTo = function(options) {
-        if (options !== undefined) {
-            if (options === null || typeof options !== 'object' || options.behavior === undefined || arguments[0].behavior === 'auto' || options.behavior === 'instant') {
-                if (__scrollTo__) {
-                    __scrollTo__.apply(this, arguments);
-                }
-            } else {
-                const now = () =>  window.performance && window.performance.now ? window.performance.now() : Date.now();
-                const ease = (k) => 0.5 * (1 - Math.cos(Math.PI * k));
-                const step = (context) => {
-                    const value = ease(Math.min((now() - context.startTime) / 468, 1));
-                    const x = context.startX + (context.x - context.startX) * value;
-                    const y = context.startY + (context.y - context.startY) * value;
-                    context.element.scrollLeft = x;
-                    context.element.scrollTop = y;
-                    if (x !== context.x || y !== context.y) {
-                        window.requestAnimationFrame(step.bind(window, context));
-                    }
-                };
-                const context = {
-                    element: this,
-                    x: typeof options.left === 'undefined' ? this.scrollLeft : ~~options.left,
-                    y: typeof options.top === 'undefined' ? this.scrollTop : ~~options.top,
-                    startX: this.scrollLeft,
-                    startY: this.scrollTop,
-                    startTime: now()
-                };
-                step(context);
-            }
-        }
-    };
-}
+module.exports = host;

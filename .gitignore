@@ -2,10 +2,9 @@
 .DS_Store?
 .nyc_output/*
 coverage/*
-dist/*
+dist
 node_modules/*
 third_party/*
-package-lock.json
 yarn.lock
 *.pyc
 .idea

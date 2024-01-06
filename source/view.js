@@ -1,15 +1,15 @@
 var view = {};
 var markdown = {};
-var base = require('./parser/base');
-var zip = require('./parser/zip');
-var tar = require('./parser/tar');
-var json = require('./parser/json');
-var xml = require('./parser/xml');
-var protobuf = require('./parser/protobuf');
-var flatbuffers = require('./render/flatbuffers');
-var hdf5 = require('./parser/hdf5');
-var python = require('./parser/python');
-var grapher = require('./render/grapher');
+var base = require('./base');
+var zip = require('./zip');
+var tar = require('./tar');
+var json = require('./json');
+var xml = require('./xml');
+var protobuf = require('./protobuf');
+var flatbuffers = require('./flatbuffers');
+var hdf5 = require('./hdf5');
+var python = require('./python');
+var grapher = require('./grapher');
 
 view.View = class {
 
@@ -26,9 +26,12 @@ view.View = class {
         this._model = null;
         this._graphs = [];
         this._selection = [];
-        this._sidebar = new view.Sidebar(this._host);
+        this._sidebar = {};
         this._searchText = '';
         this._modelFactoryService = new view.ModelFactoryService(this._host);
+    }
+    filter(context){
+        return this._modelFactoryService._filter(context);
     }
 
     async start() {
@@ -675,10 +678,11 @@ view.View = class {
     }
 
     async open(context) {
-        this._sidebar.close();
+        if(this._sidebar && this._sidebar.close){
+            this._sidebar.close();
+        }
         await this._timeout(2);
         try {
-            // 模型工厂
             const model = await this._modelFactoryService.open(context);
             const format = [];
             if (model.format) {
@@ -694,9 +698,7 @@ view.View = class {
                     model_producer: model.producer || ''
                 });
             }
-            await this._timeout(20);
-            const graphs = Array.isArray(model.graphs) && model.graphs.length > 0 ? [model.graphs[0]] : [];
-            return await this._updateGraph(model, graphs);
+            return this._timeout(20).then(()=> model);
         } catch (error) {
             if (error && context.identifier) {
                 error.context = context.identifier;
@@ -2185,85 +2187,6 @@ view.Edge = class extends grapher.Edge {
     }
 };
 
-view.Sidebar = class {
-
-    constructor(host) {
-        this._host = host;
-        this._stack = [];
-        const pop = () => this._update(this._stack.slice(0, -1));
-        this._closeSidebarHandler = () => pop();
-        this._closeSidebarKeyDownHandler = (e) => {
-            if (e.keyCode == 27) {
-                e.preventDefault();
-                pop();
-            }
-        };
-        const sidebar = this._element('sidebar');
-        sidebar.addEventListener('transitionend', (event) => {
-            if (event.propertyName === 'opacity' && sidebar.style.opacity === '0') {
-                const content = this._element('sidebar-content');
-                content.innerHTML = '';
-            }
-        });
-    }
-
-    _element(id) {
-        return this._host.document.getElementById(id);
-    }
-
-    open(content, title) {
-        this._update([{ title: title, content: content }]);
-    }
-
-    close() {
-        this._update([]);
-    }
-
-    push(content, title) {
-        this._update(this._stack.concat({ title: title, content: content }));
-    }
-
-    _update(stack) {
-        const sidebar = this._element('sidebar');
-        const container = this._element('graph');
-        const closeButton = this._element('sidebar-closebutton');
-        closeButton.removeEventListener('click', this._closeSidebarHandler);
-        this._host.document.removeEventListener('keydown', this._closeSidebarKeyDownHandler);
-        if (stack) {
-            this._stack = stack;
-        } else if (this._stack.length > 0) {
-            this._stack.pop();
-        }
-        if (this._stack.length > 0) {
-            const item = this._stack[this._stack.length - 1];
-            this._element('sidebar-title').innerHTML = item.title || '';
-            closeButton.addEventListener('click', this._closeSidebarHandler);
-            const content = this._element('sidebar-content');
-            if (typeof item.content == 'string') {
-                content.innerHTML = item.content;
-            } else if (item.content instanceof Array) {
-                content.innerHTML = '';
-                for (const element of item.content) {
-                    content.appendChild(element);
-                }
-            } else {
-                content.innerHTML = '';
-                content.appendChild(item.content);
-            }
-            sidebar.style.width = 'min(calc(100% * 0.6), 42em)';
-            sidebar.style.right = 0;
-            sidebar.style.opacity = 1;
-            this._host.document.addEventListener('keydown', this._closeSidebarKeyDownHandler);
-            container.style.width = 'max(40vw, calc(100vw - 42em))';
-        } else {
-            sidebar.style.right = 'calc(0px - min(calc(100% * 0.6), 42em))';
-            sidebar.style.opacity = 0;
-            container.style.width = '100%';
-            container.focus();
-        }
-    }
-};
-
 view.Control = class {
 
     constructor(host) {
@@ -2508,49 +2431,6 @@ view.SelectView = class extends view.Control {
     }
 };
 
-view.ValueTextView = class extends view.Control {
-
-    constructor(host, value, style) {
-        super(host);
-        this._element = this.createElement('div', 'sidebar-item-value');
-        if (value) {
-            const list = Array.isArray(value) ? value : [value];
-            let className = 'sidebar-item-value-line';
-            for (const item of list) {
-                const line = this.createElement('div', className);
-                switch (style) {
-                    case 'code':
-                        line.innerHTML = '<code>' + item + '<code>';
-                        break;
-                    case 'bold':
-                        line.innerHTML = '<b>' + item + '<b>';
-                        break;
-                    default:
-                        line.innerText = item;
-                        break;
-                }
-                this._element.appendChild(line);
-                className = 'sidebar-item-value-line-border';
-            }
-        }
-    }
-
-    action(text, callback) {
-        this._action = this.createElement('div', 'sidebar-item-value-expander');
-        this._action.innerHTML = text;
-        this._action.addEventListener('click', () => {
-            callback();
-        });
-        this._element.insertBefore(this._action, this._element.childNodes[0]);
-    }
-
-    render() {
-        return [this._element];
-    }
-
-    toggle() {
-    }
-};
 
 view.AttributeView = class extends view.Control {
 
@@ -5453,31 +5333,38 @@ view.ModelFactoryService = class {
         const modules = this._filter(context).filter((module) => module && module.length > 0);
         const errors = [];
         let success = false;
-        const next = async () => {
+        const nextModule = async () => {
             if (modules.length > 0) {
                 try {
-                    const id = modules.shift();
-                    const module = await this._host.require(id);
-                    if (!module.ModelFactory) {
-                        throw new view.Error("Failed to load module '" + id + "'.");
-                    }
-                    const modelFactory = new module.ModelFactory();
-                    const target = modelFactory.match(context);
-                    if (target) {
-                        success = true;
-                        const model = await modelFactory.open(context, target);
-                        if (!model.identifier) {
-                            model.identifier = context.identifier;
+                    let id = modules.shift();
+                    return this._host.require(id).then((module)=>{
+                        if (!module.ModelFactory) {
+                            throw new view.Error("Failed to load module '" + id + "'.");
                         }
-                        return model;
-                    }
+                        const modelFactory = new module.ModelFactory();
+                        const target = modelFactory.match(context);
+                        if (target) {
+                            success = true;
+                            return modelFactory.open(context, target).then((model)=>{
+                                if (!model.identifier) {
+                                    model.identifier = context.identifier;
+                                }
+                                return model;
+                            }).catch((err)=>{
+                                return nextModule();
+                            })
+                        }
+                        return nextModule();
+                    }).catch(()=>{
+                        return nextModule();
+                    })
                 } catch (error) {
                     if (context.stream && context.stream.position !== 0) {
                         context.stream.seek(0);
                     }
                     errors.push(error);
+                    throw errors[0];
                 }
-                return await next();
             }
             if (success) {
                 if (errors.length === 1) {
@@ -5487,7 +5374,7 @@ view.ModelFactoryService = class {
             }
             return null;
         };
-        return await next();
+        return nextModule();
     }
 
     async _openEntries(entries) {
